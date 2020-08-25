@@ -70,11 +70,16 @@ echo -e "\n Installing firefox beta \n"
 add-apt-repository ppa:mozillateam/firefox-next -y
 apt-get install firefox --assume-yes
 
+echo -e "\n Installing Persepolisdm \n"
+add-apt-repository ppa:persepolis/ppa -y
+apt update
+apt install persepolis -y
+
 echo -e "\n Installing gitG\n"
 apt install gitg
 
 
-pd 'SmartGit Protonmail Ulauncher hugo'
+pd 'SmartGit Protonmail Ulauncher Hugo'
 #wget https://protonmail.com/download/protonmail-bridge_1.2.8-1_amd64.deb
 
 protnmailDebPkg="$(curl https://protonmail.com/download/current_version_linux.json | jq -r '.DebFile')"
@@ -103,11 +108,20 @@ curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest \
   | cut -d ":" -f 2,3 \
   | tr -d \" \
   | wget -qi -
+  
+  
+curl -s https://api.github.com/repos/persepolisdm/persepolis/releases/latest \
+  | grep "browser_download_url.*persepolis_[^extended].*_all\.deb" \
+  | cut -d ":" -f 2,3 \
+  | tr -d \" \
+  | wget -qi -
  
-wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb 
+#wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb 
 
 echo -e "\n Installing deb package \n"
 apt install ./*.deb --assume-yes
+
+
 
 echo -e "\n Fixing broken package \n"
 apt --fix-broken install
@@ -188,6 +202,9 @@ mv tor-browser_en-US tor
 appDir=/home/$USER/.Apps/tor
 echo -e "\n moving tor to  unpacked dir  $appDir\n"
 mv tor $appDir
+
+echo -e '\n Downloading linphone AppImage Please install it manually'
+wget curl https://www.linphone.org/ | grep ".AppImage" | grep -Po '(?<=href=")[^"]*' 
 
 maintainPackage
 
