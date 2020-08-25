@@ -45,6 +45,9 @@ echo -e "\n Installing timeshift \n"
 add-apt-repository -y ppa:teejee2008/ppa -y
 apt install timeshift
 
+echo -e "\n Installing transmission \n"
+apt install transmission
+
 echo -e "\n Installing vscode \n"
 wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
 add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
@@ -100,6 +103,8 @@ curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest \
   | cut -d ":" -f 2,3 \
   | tr -d \" \
   | wget -qi -
+ 
+wget https://launchpad.net/veracrypt/trunk/1.24-update7/+download/veracrypt-1.24-Update7-Ubuntu-20.04-amd64.deb 
 
 echo -e "\n Installing deb package \n"
 apt install ./*.deb --assume-yes
