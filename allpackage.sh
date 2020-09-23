@@ -194,6 +194,13 @@ echo -e "\n installing keepassxc \n"
 
 apt install keepassxc
 
+
+echo -e "\n installing gimp \n"
+
+apt install gimp
+
+
+
 echo -e "\n installing tor \n"
 
 torBaseUrl="https://www.torproject.org"
