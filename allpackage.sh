@@ -190,6 +190,9 @@ echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium mai
 apt update 
 apt install codium 
 
+echo -e "\n installing keepassxc \n"
+
+apt install keepassxc
 
 echo -e "\n installing tor \n"
 
