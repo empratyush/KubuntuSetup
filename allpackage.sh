@@ -26,16 +26,16 @@ maintainPackage
 echo -e "\n Installing essential packages\n"
 
 echo -e "\n Installing software-properties-common \n"
-apt install software-properties-common
+apt install software-properties-common --assume-yes
 
 echo -e "\n Installing jq for json formatting \n"
-apt install jq
+apt install jq --assume-yes
 
 echo -e "\n Installing  geary curl \n"
 apt install geary curl git --assume-yes
 
 echo -e "\n Installing golang \n"
-apt install golang-go
+apt install golang-go --assume-yes
 
 echo -e "\n Installing nextcloud \n"
 add-apt-repository ppa:nextcloud-devs/client -y
@@ -43,15 +43,15 @@ apt install nextcloud-client -y
 
 echo -e "\n Installing timeshift \n"
 add-apt-repository -y ppa:teejee2008/ppa -y
-apt install timeshift
+apt install timeshift --assume-yes
 
 echo -e "\n Installing transmission \n"
-apt install transmission
+apt install transmission --assume-yes
 
-echo -e "\n Installing vscode \n"
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
-add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
-apt install code
+#echo -e "\n Installing vscode \n"
+#wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | apt-key add -
+#add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
+#apt install code
 
 echo -e "\n Installing signal \n"
 curl -s https://updates.signal.org/desktop/apt/keys.asc | apt-key add -
@@ -76,7 +76,7 @@ apt update
 apt install persepolis -y
 
 echo -e "\n Installing gitG\n"
-apt install gitg
+apt install gitg --assume-yes
 
 
 pd 'SmartGit Protonmail Ulauncher Hugo'
@@ -188,16 +188,22 @@ wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.g
 echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main' | tee --append /etc/apt/sources.list.d/vscodium.list 
 
 apt update 
-apt install codium 
+apt install codium --assume-yes
 
 echo -e "\n installing keepassxc \n"
 
-apt install keepassxc
+apt install keepassxc --assume-yes
 
 
 echo -e "\n installing gimp \n"
 
-apt install gimp
+apt install gimp --assume-yes
+
+
+
+echo -e "\n settings flatpak \n"
+add-apt-repository ppa:alexlarsson/flatpak --assume-yes
+apt install flatpak
 
 
 
