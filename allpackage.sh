@@ -190,8 +190,13 @@ echo 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium mai
 apt update 
 apt install codium --assume-yes
 
+echo -e "\n adding git repo \n"
+add-apt-repository ppa:git-core/ppa
+
+
 echo -e "\n installing keepassxc \n"
 
+add-apt-repository ppa:phoerious/keepassxc -y
 apt install keepassxc --assume-yes
 
 
@@ -202,9 +207,10 @@ apt install gimp --assume-yes
 
 
 echo -e "\n settings flatpak \n"
-add-apt-repository ppa:alexlarsson/flatpak --assume-yes
-apt install flatpak
-
+add-apt-repository ppa:alexlarsson/flatpak -y
+apt install flatpak -y
+apt install plasma-discover-flatpak-backend -y
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 
 echo -e "\n installing tor \n"
