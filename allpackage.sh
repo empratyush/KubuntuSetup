@@ -70,6 +70,10 @@ echo -e "\n Installing firefox beta \n"
 add-apt-repository ppa:mozillateam/firefox-next -y
 apt-get install firefox --assume-yes
 
+echo -e "\n Installing firefox-trunk \n"
+add-apt-repository ppa:ubuntu-mozilla-daily/ppa -y
+apt install firefox-trunk -y
+
 echo -e "\n Installing Persepolisdm \n"
 add-apt-repository ppa:persepolis/ppa -y
 apt update
