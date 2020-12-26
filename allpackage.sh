@@ -195,7 +195,7 @@ apt update
 apt install codium --assume-yes
 
 echo -e "\n adding git repo \n"
-add-apt-repository ppa:git-core/ppa
+add-apt-repository ppa:git-core/ppa -y
 
 
 echo -e "\n installing keepassxc \n"
@@ -215,29 +215,41 @@ add-apt-repository ppa:alexlarsson/flatpak -y
 apt install flatpak -y
 apt install plasma-discover-flatpak-backend -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
+
+echo -e "\n installing eval chrome \n"
+flatpak install com.google.Chrome
 
 
-echo -e "\n installing tor \n"
+ echo -e "\n installing tor \n"
+ flatpak install com.github.micahflee.torbrowser-launcher -y
 
-torBaseUrl="https://www.torproject.org"
-torEndPoint="https://www.torproject.org/download/"
-torDownloathPath="$(curl $torEndPoint | grep "Download for Linux" | cut -d ":" -f 2,3 | grep -Po '(?<=href=")[^"]*'  )"
-torDownloadUrl="$torBaseUrl$torDownloathPath"
+# 
+# torBaseUrl="https://www.torproject.org"
+# torEndPoint="https://www.torproject.org/download/"
+# torDownloathPath="$(curl $torEndPoint | grep "Download for Linux" | cut -d ":" -f 2,3 | grep -Po '(?<=href=")[^"]*'  )"
+# torDownloadUrl="$torBaseUrl$torDownloathPath"
+# 
+# echo -e "\n downloading tor  from $torDownloadUrl\n"
+# wget -O tor.tar.xz $torDownloadUrl
+# 
+# tar xf tor.tar.xz
+# 
+# echo -e "\n renameing tor  unpacked dir \n"
+# mv tor-browser_en-US tor
+# 
+# appDir=/home/$USER/.Apps/tor
+# echo -e "\n moving tor to  unpacked dir  $appDir\n"
+# mv tor $appDir
+# 
+# echo -e '\n Downloading linphone AppImage Please install it manually'
+# wget curl https://www.linphone.org/ | grep ".AppImage" | grep -Po '(?<=href=")[^"]*' 
+snap install android-studio --classic
+snap install android-studio-canary --classic
+snap install flutter --classic
+snap install chromium --edge
 
-echo -e "\n downloading tor  from $torDownloadUrl\n"
-wget -O tor.tar.xz $torDownloadUrl
 
-tar xf tor.tar.xz
-
-echo -e "\n renameing tor  unpacked dir \n"
-mv tor-browser_en-US tor
-
-appDir=/home/$USER/.Apps/tor
-echo -e "\n moving tor to  unpacked dir  $appDir\n"
-mv tor $appDir
-
-echo -e '\n Downloading linphone AppImage Please install it manually'
-wget curl https://www.linphone.org/ | grep ".AppImage" | grep -Po '(?<=href=")[^"]*' 
 
 maintainPackage
 
